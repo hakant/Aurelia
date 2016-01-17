@@ -1,13 +1,20 @@
-export class App{
-  constructor(){
-    this.message = "";
+import {inject} from "aurelia-framework";
+import {MovieData} from "./movieData";
+
+// ES7 decorators
+@inject(MovieData)
+export class App {
+
+  constructor(movieData) {
+    this.movieData = movieData;
   }
 
-  activate(){
-    this.message = "Hello from Aurelia!";
+  activate() {
+    return this.movieData
+      .getAll()
+      .then(movies => {
+        this.movies = movies;
+      });
   }
 
-  changeMessage(){
-    this.message = "Goodbye!";
-  }
 }
