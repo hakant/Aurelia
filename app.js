@@ -1,20 +1,24 @@
-import {inject} from "aurelia-framework";
-import {MovieData} from "./movieData";
-
-// ES7 decorators
-@inject(MovieData)
 export class App {
 
-  constructor(movieData) {
-    this.movieData = movieData;
-  }
+  configureRouter(config, router) {
+    this.router = router;
 
-  activate() {
-    return this.movieData
-      .getAll()
-      .then(movies => {
-        this.movies = movies;
-      });
+    config.map([{
+      route: ["", "list"],
+      moduleId: "movies/list",
+      title: "List",
+      nav: true,
+      name: "home"
+    }, {
+      route: "about",
+      moduleId: "about/about",
+      title: "About",
+      nav: true
+    }, {
+      name: "details",
+      route: "details/:id",
+      moduleId: "movies/details"
+    }]);
   }
 
 }

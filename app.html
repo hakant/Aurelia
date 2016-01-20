@@ -1,15 +1,23 @@
 <template>
-  <div>You have ${movies.length} movies.</div>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Year</th>
-    </tr>
-    <tr repeat.for="movie of movies">
-      <td>${movie.title}</td>
-      <td>${movie.releaseYear}</td>
-    </tr>
-  </table>
 
-  <compose view-model="currentDate"></compose>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Movies!</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li repeat.for="row of router.navigation"
+            class="${row.isActive ? 'active' : ''}">
+          <a href.bind="row.href">${row.title}</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container" show.bind="router.isNavigating">
+    <i class="fa fa-spinner fa-spin"></i>
+  </div>
+
+  <router-view></router-view>
+
 </template>
