@@ -27,4 +27,11 @@ export class MovieData{
         return response.content;
       });
   }
+
+  save(movie){
+    console.log(movie);
+    return new Promise(function(resolve, reject){
+      resolve(movie);
+    });
+  }
 }

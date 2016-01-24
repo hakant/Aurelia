@@ -18,6 +18,14 @@ export class App {
       name: "details",
       route: "details/:id",
       moduleId: "movies/details"
+    }, {
+      name: "edit",
+      route: "edit/:id",
+      moduleId: "movies/edit"
+    }, {
+      name: "create",
+      route: "create",
+      moduleId: "movies/edit"
     }]);
   }
 
